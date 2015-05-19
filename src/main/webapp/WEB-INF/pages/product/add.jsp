@@ -21,6 +21,9 @@
             <form:label path="price">Price:</form:label>
             <form:input path="price"/>
 
+            <form:label path="quantity">Quantity:</form:label>
+            <form:input path="quantity"/>
+
             <input type="submit" value="insert">
 
         </form:form>

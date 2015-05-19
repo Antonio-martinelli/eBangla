@@ -13,6 +13,9 @@ public class Product {
     private String name, description;
 
     @Basic
+    private Integer quantity;
+
+    @Basic
     private Double price;
 
     public Long getId() {
@@ -47,4 +50,11 @@ public class Product {
         this.price = price;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

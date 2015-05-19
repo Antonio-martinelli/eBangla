@@ -2,19 +2,15 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 
-/**
- * Created by Lorenzo Goldoni on 19/05/15.
- */
-
 @Entity
 public class Supplier {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-        @Basic
-        private String iva, email, phone;
+    @Basic
+    private String iva, email, phone;
 
     public Long getId() {
         return id;
@@ -47,4 +43,5 @@ public class Supplier {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }
