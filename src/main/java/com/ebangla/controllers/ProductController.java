@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("product") Product product, BindingResult result) {
+    public String addProduct(@ModelAttribute("product") Product product, BindingResult result) {
 
         productRepository.save(product);
 
@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @RequestMapping("/product/delete/{productId}")
-    public String deleteUser(@PathVariable("productId") Long productId) {
+    public String deleteProduct(@PathVariable("productId") Long productId) {
 
         productRepository.delete(productRepository.findOne(productId));
 
