@@ -33,7 +33,6 @@
           <table class="table table-bordered table-striped">
               <thead>
               <tr>
-                  <th>Name</th>
                   <th>Iva</th>
                   <th>Email</th>
                   <th>Phone Number</th>
@@ -43,7 +42,6 @@
               <tbody>
               <c:forEach items="${suppliers}" var="supplier">
                   <tr>
-                      <td>${supplier.name}</td>
                       <td>${supplier.iva}</td>
                       <td>${supplier.email}</td>
                       <td>${supplier.phone}</td>
