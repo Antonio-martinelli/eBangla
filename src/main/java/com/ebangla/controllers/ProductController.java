@@ -20,13 +20,13 @@ public class ProductController {
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String listProduct(ModelMap model) {
         model.addAttribute("products", productRepository.findAll());
-        return "products";
+        return "product/index";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.GET)
     public String addProduct(ModelMap model) {
         model.addAttribute("product", new Product());
-        return "addProduct";
+        return "product/add";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
