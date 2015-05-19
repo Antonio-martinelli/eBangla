@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -39,4 +40,5 @@ public class UserController {
 
         return "redirect:/";
     }
+
 }
