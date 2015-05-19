@@ -1,5 +1,5 @@
 target/
-src/main/resourcedds/META-INF/persistence.xml
+persistence.xml
 .idea/
 ebangla.iml
 .DS_Store
