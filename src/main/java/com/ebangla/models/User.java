@@ -2,26 +2,26 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 
-@Entity(name = "user")
+@Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public Long getId()
-    {
+    @Basic
+    private String firstName, lastName, email;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    private Address address;
+
+    public Long getId() {
         return id;
     }
 
-    @Basic
-    private String firstName;
-
-    @Basic
-    private String lastName;
-
-    @Basic
-    private String email;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName()
     {
@@ -51,6 +51,14 @@ public class User {
     public void setEmail(String email)
     {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }

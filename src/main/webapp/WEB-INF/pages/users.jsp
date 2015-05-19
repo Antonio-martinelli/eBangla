@@ -20,32 +20,30 @@
 <div class="container">
     <div class="row">
         <div class="span8 offset2">
-            <h1>Users</h1>
+            <h1>${titolo}</h1>
             <form:form method="post" action="add" commandName="user" class="form-horizontal">
-            <div class="control-group">
-                <form:label cssClass="control-label" path="firstName">First Name:</form:label>
-                <div class="controls">
-                    <form:input path="firstName"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <form:label cssClass="control-label" path="lastName">Last Name:</form:label>
-                <div class="controls">
-                    <form:input path="lastName"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <form:label cssClass="control-label" path="email">Email:</form:label>
-                <div class="controls">
-                    <form:input path="email"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="submit" value="Add User" class="btn"/>
-                    </form:form>
-                </div>
-            </div>
+
+                <form:label path="firstName">First Name:</form:label>
+                <form:input path="firstName"/>
+
+                <form:label path="lastName">Last Name:</form:label>
+                <form:input path="lastName"/>
+
+                <form:label path="email">Email:</form:label>
+                <form:input path="email"/>
+
+                <form:label path="address.city">City:</form:label>
+                <form:input path="address.city"/>
+
+                <form:label path="address.cap">Cap:</form:label>
+                <form:input path="address.cap"/>
+
+                <form:label path="address.address_line">Address line:</form:label>
+                <form:input path="address.address_line"/>
+
+                <input type="submit" value="send">
+
+            </form:form>
 
             <c:if test="${!empty users}">
                 <h3>Users</h3>
