@@ -13,8 +13,6 @@
 
         <form:form method="post" action="/supplier/add" commandName="supplier" class="form-horizontal">
 
-            <form:label path="name">Supplier Name:</form:label>
-            <form:input path="name"/>
 
             <form:label path="iva">Iva:</form:label>
             <form:input path="iva"/>
