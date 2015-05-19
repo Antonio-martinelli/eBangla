@@ -20,6 +20,8 @@
         <li><a href="/supplier">Lista fornitori</a></li>
         <li><a href="/product">Lista prodotti</a></li>
         <li><a href="/product/add">Aggiungi prodotto</a></li>
+        <li><a href="/order">Lista ordini</a></li>
+        <li><a href="/order/add">Aggiungi un ordine</a></li>
     </ul>
     <jsp:invoke fragment="yeld"/>
     <jsp:invoke fragment="footer"/>
