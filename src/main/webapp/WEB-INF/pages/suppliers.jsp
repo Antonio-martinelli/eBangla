@@ -20,8 +20,6 @@
       <h1>Suppliers</h1>
       <form:form method="post" action="/supplier/add" commandName="supplier" class="form-horizontal">
 
-        <form:label path="name">Supplier Name:</form:label>
-        <form:input path="name"/>
 
         <form:label path="iva">Iva:</form:label>
         <form:input path="iva"/>
@@ -38,11 +36,10 @@
       </form:form>
 
       <c:if test="${!empty suppliers}">
-        <h3>Users</h3>
+        <h3>Suppliers</h3>
         <table class="table table-bordered table-striped">
           <thead>
           <tr>
-            <th>Name</th>
             <th>Iva</th>
             <th>Email</th>
             <th>Phone Number</th>
@@ -52,7 +49,6 @@
           <tbody>
           <c:forEach items="${suppliers}" var="supplier">
             <tr>
-              <td>${supplier.name}</td>
               <td>${supplier.iva}</td>
               <td>${supplier.email}</td>
               <td>${supplier.phone}</td>

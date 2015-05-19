@@ -14,7 +14,7 @@ public class Supplier {
         private Long id;
 
         @Basic
-        private String name, iva, email, phone;
+        private String iva, email, phone;
 
     public Long getId() {
         return id;
@@ -22,14 +22,6 @@ public class Supplier {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getIva() {
