@@ -20,7 +20,7 @@
 
 <body>
     <header id="header">
-        <h1 id="logo"><a title="homepage" href="#">eBangla</a></h1>
+        <h1 id="logo"><a title="homepage" href="/">eBangla</a></h1>
         <nav id="main-nav">
             <ul>
                 <li><a class="active" title="homepage" href="/">home</a></li>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <footer id="footer">
-        <p>Tutti i diritti sono riservati al GoT</p>
+        <p>Tutti i diritti sono riservati al bangladino sotto casa sua</p>
     </footer>
     <jsp:invoke fragment="footer"/>
 </body>

@@ -17,19 +17,19 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listProduct(ModelMap model) {
         model.addAttribute("products", productRepository.findAll());
         return "product/index";
     }
 
-    @RequestMapping(value = "/product/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String addProduct(ModelMap model) {
         model.addAttribute("product", new Product());
         return "product/add";
     }
 
-    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/product", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product, BindingResult result) {
 
         productRepository.save(product);

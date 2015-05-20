@@ -7,10 +7,10 @@ $desktop: new-breakpoint(max-width 1200px 4);
 $tablet: new-breakpoint(max-width 960px 4);
 $mobile: new-breakpoint(max-width 480px 4);
 
-
 * {
   margin: 0;
   padding: 0;
+  outline: none
 }
 
 a {
@@ -200,4 +200,28 @@ body {
     padding: 1em;
     text-align: center;
     display: block;
+}
+
+#form-data {
+  label {
+    font-size: 1.3em;
+    padding-bottom: .5em;
+    display: block;
+  }
+  input {
+    width: 100%;
+    padding: .5em;
+    border: 3px solid #eee;
+    font-size: 1em;
+    margin-bottom: 2em;
+  }
+  input[type=submit] {
+    background: $orange;
+    width: 100px;
+    color: #fff;
+    text-transform: capitalize;
+    width: 190px;
+    border: 0;
+    float: right;
+  }
 }

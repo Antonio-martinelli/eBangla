@@ -12,30 +12,29 @@
     <jsp:attribute name="yeld">
 
         <c:if test="${!empty products}">
-            <h3>Products</h3>
-            <table>
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div id="products">
+                <form id="search" action="#" method="post">
+                    <label><input type="text" placeholder="Cerca un prodotto" /></label>
+                </form>
                 <c:forEach items="${products}" var="product">
-                    <tr>
-                        <td>${product.id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.description}</td>
-                        <td>&euro; ${product.price}</td>
+                <article class="product">
+                    <figure>
+                        <img src="/assets/images/spaghetti.png" alt="foto prodotto 1">
+                    </figure>
+                    <div class="info">
+                        <h1>${product.name}</h1>
+                        <div class="desc">${product.description}</div>
+                        <span class="price">&euro; ${product.price}</span>
+                        <a href="#" title="acquista ora" class="btn">Acquista ora</a>
+                        <!--
                         <td>
                             <form action="/product/delete/${product.id}" method="post"><input type="submit" value="Delete"/></form>
                         </td>
-                    </tr>
+                        -->
+                    </div>
+                </article>
                 </c:forEach>
-                </tbody>
-            </table>
+            </div>
         </c:if>
 
     </jsp:attribute>

@@ -8,34 +8,36 @@
 
     <jsp:attribute name="title">Lista degli fornitori</jsp:attribute>
 
+    <jsp:attribute name="head">
+        <link href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    </jsp:attribute>
 
     <jsp:attribute name="yeld">
 
-        <form:form method="post" action="/supplier/add" commandName="supplier" class="form-horizontal">
+        <form:form id="form-data" method="post" action="/supplier/add" commandName="supplier" class="form-horizontal">
 
-
-            <form:label path="iva">Iva:</form:label>
+            <form:label path="iva">Partita iva</form:label>
             <form:input path="iva"/>
 
-            <form:label path="email">Email:</form:label>
+            <form:label path="email">Email</form:label>
             <form:input path="email"/>
 
-            <form:label path="phone">Phone:</form:label>
+            <form:label path="phone">Numero di telefono</form:label>
             <form:input path="phone"/>
 
 
-            <input type="submit" value="add supplier">
+            <input type="submit" value="aggiungi fornitore">
 
         </form:form>
 
       <c:if test="${!empty suppliers}">
-          <h3>Users</h3>
-          <table class="table table-bordered table-striped">
+          <h3>Fornitori</h3>
+          <table id="supplier">
               <thead>
               <tr>
-                  <th>Iva</th>
+                  <th>Partita iva</th>
                   <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Numero di telefono</th>
                   <th>&nbsp;</th>
               </tr>
               </thead>
@@ -55,6 +57,16 @@
           </table>
       </c:if>
 
+    </jsp:attribute>
+
+    <jsp:attribute name="footer">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#supplier').DataTable();
+            });
+        </script>
     </jsp:attribute>
 
 </t:layout>

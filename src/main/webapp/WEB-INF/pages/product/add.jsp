@@ -10,21 +10,21 @@
 
     <jsp:attribute name="yeld">
 
-        <form:form method="post" action="/product/add" commandName="product">
+        <form:form id="form-data" method="post" action="/product" commandName="product">
 
-            <form:label path="name">Name:</form:label>
+            <form:label path="name">Nome prodotto</form:label>
             <form:input path="name"/>
 
-            <form:label path="description">Description:</form:label>
+            <form:label path="description">Descrizione</form:label>
             <form:input path="description"/>
 
-            <form:label path="price">Price:</form:label>
+            <form:label path="price">Prezzo</form:label>
             <form:input path="price"/>
 
-            <form:label path="quantity">Quantity:</form:label>
+            <form:label path="quantity">Quantit&agrave;</form:label>
             <form:input path="quantity"/>
 
-            <input type="submit" value="insert">
+            <input type="submit" value="inserisci prodotto">
 
         </form:form>
 

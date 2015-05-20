@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
         model.addAttribute("user", new User());
         model.addAttribute("users", userRepository.findAll());
@@ -30,7 +30,7 @@ public class UserController {
 
         userRepository.save(user);
 
-        return "redirect:/";
+        return "redirect:/user";
     }
 
     @RequestMapping("/delete/{userId}")
@@ -38,7 +38,7 @@ public class UserController {
 
         userRepository.delete(userRepository.findOne(userId));
 
-        return "redirect:/";
+        return "redirect:/user";
     }
 
 }
