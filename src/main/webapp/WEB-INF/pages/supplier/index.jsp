@@ -49,7 +49,7 @@
                       <td>${supplier.phone}</td>
 
                       <td>
-                          <form action="delete/${supplier.id}" method="post"><input type="submit" class="btn btn-danger btn-mini" value="Delete"/></form>
+                          <form action="supplier/delete/${supplier.id}" method="post"><input type="submit" class="btn btn-danger btn-mini" value="Delete"/></form>
                       </td>
                   </tr>
               </c:forEach>
@@ -64,7 +64,11 @@
         <script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#supplier').DataTable();
+                $('#supplier').DataTable({
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Italian.json"
+                    }
+                });
             });
         </script>
     </jsp:attribute>

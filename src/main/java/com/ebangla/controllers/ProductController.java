@@ -26,6 +26,7 @@ public class ProductController {
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String addProduct(ModelMap model) {
         model.addAttribute("product", new Product());
+        model.addAttribute("products", productRepository.findAll());
         return "product/add";
     }
 

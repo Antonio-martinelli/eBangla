@@ -1,8 +1,6 @@
 package com.ebangla.controllers;
 
-
-
-        import com.ebangla.models.Supplier;
+import com.ebangla.models.Supplier;
         import com.ebangla.models.SupplierRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -13,9 +11,6 @@ package com.ebangla.controllers;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Created by Lorenzo Goldoni on 19/05/15.
- */
 @Controller
 public class SupplierController {
 
@@ -37,7 +32,7 @@ public class SupplierController {
         return "redirect:/supplier";
     }
 
-    @RequestMapping("/delete/{supplierId}")
+    @RequestMapping("/supplier/delete/{supplierId}")
     public String deleteSupplier(@PathVariable("supplierId") Long supplierId) {
 
         supplierRepository.delete(supplierRepository.findOne(supplierId));
