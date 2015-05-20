@@ -6,7 +6,7 @@
 <t:layout>
 
 
-    <jsp:attribute name="title">Aggiungi prodotto</jsp:attribute>
+    <jsp:attribute name="title">Gestione dei prodotti</jsp:attribute>
 
 
     <jsp:attribute name="head">
@@ -15,7 +15,7 @@
 
     <jsp:attribute name="yeld">
 
-        <form:form id="form-data" method="post" action="/product" commandName="product">
+        <form:form id="form-data" method="post" action="/admin/product" commandName="product">
 
             <form:label path="name">Nome prodotto</form:label>
             <form:input path="name"/>
@@ -29,7 +29,7 @@
             <form:label path="quantity">Quantit&agrave;</form:label>
             <form:input path="quantity"/>
 
-            <input type="submit" value="inserisci prodotto">
+            <input type="submit" value="aggiungi prodotto">
 
         </form:form>
 
@@ -53,7 +53,7 @@
                         <td>${product.price}</td>
                         <td>${product.quantity}</td>
                         <td>
-                            <form action="product/delete/${product.id}" method="post"><input type="submit" value="Rimuovi"/></form>
+                            <form action="/admin/product/delete/${product.id}" method="post"><input type="submit" value="Rimuovi"/></form>
                         </td>
                     </tr>
                 </c:forEach>

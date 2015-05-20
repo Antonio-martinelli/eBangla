@@ -1,4 +1,4 @@
-package com.ebangla.controllers;
+package com.ebangla.controllers.admin;
 
 import com.ebangla.models.Supplier;
         import com.ebangla.models.SupplierRepository;
@@ -12,36 +12,31 @@ import com.ebangla.models.Supplier;
         import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping(value = "/admin/supplier")
 public class SupplierController {
 
     @Autowired
     private SupplierRepository supplierRepository;
 
-    @RequestMapping(value = "/supplier", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String listSupplier(ModelMap model) {
         model.addAttribute("supplier", new Supplier());
         model.addAttribute("suppliers", supplierRepository.findAll());
-        return "supplier/index";
+        return "admin/supplier";
     }
 
-    @RequestMapping(value = "/supplier/add", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String addSupplier(@ModelAttribute("supplier") Supplier supplier, BindingResult result) {
-
         supplierRepository.save(supplier);
-
-        return "redirect:/supplier";
+        return "redirect:/admin/supplier";
     }
 
-    @RequestMapping("/supplier/delete/{supplierId}")
+    @RequestMapping("/delete/{supplierId}")
     public String deleteSupplier(@PathVariable("supplierId") Long supplierId) {
 
         supplierRepository.delete(supplierRepository.findOne(supplierId));
 
-        return "redirect:/supplier";
+        return "redirect:/admin/supplier";
     }
-
-
-
-
 
 }

@@ -24,14 +24,14 @@
         <nav id="main-nav">
             <ul>
                 <li><a title="homepage" href="/">home</a></li>
-                <li><a title="fornitori" href="/supplier">fornitori</a></li>
-                <li><a title="prodotti" href="/product">prodotti</a></li>
-                <li><a title="ordini" href="/order">ordini</a></li>
+                <li><a title="fornitori" href="/admin/supplier">fornitori</a></li>
+                <li><a title="prodotti" href="/admin/product">prodotti</a></li>
+                <li><a title="ordini" href="/admin/order">ordini</a></li>
             </ul>
         </nav>
         <nav id="secondary-nav">
             <ul>
-                <li><a title="registrati" href="/user">registrati</a></li>
+                <li><a title="registrati" href="/admin/user">registrati</a></li>
                 <li><a title="login" href="#">login</a></li>
             </ul>
         </nav>
@@ -48,7 +48,7 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/min/script-min.js"></script>
+    <script type="text/javascript" src="/assets/js/min/script-min.js"></script>
     <jsp:invoke fragment="footer"/>
 
 </body>

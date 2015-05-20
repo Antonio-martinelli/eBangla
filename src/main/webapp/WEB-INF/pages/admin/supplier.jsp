@@ -6,7 +6,7 @@
 <t:layout>
 
 
-    <jsp:attribute name="title">Lista degli fornitori</jsp:attribute>
+    <jsp:attribute name="title">Gestione dei fornitori</jsp:attribute>
 
     <jsp:attribute name="head">
         <link href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
@@ -14,7 +14,7 @@
 
     <jsp:attribute name="yeld">
 
-        <form:form id="form-data" method="post" action="/supplier/add" commandName="supplier" class="form-horizontal">
+        <form:form id="form-data" method="post" action="/admin/supplier" commandName="supplier" class="form-horizontal">
 
             <form:label path="iva">Partita iva</form:label>
             <form:input path="iva"/>
@@ -49,7 +49,7 @@
                       <td>${supplier.phone}</td>
 
                       <td>
-                          <form action="supplier/delete/${supplier.id}" method="post"><input type="submit" class="btn btn-danger btn-mini" value="Delete"/></form>
+                          <form action="/admin/supplier/delete/${supplier.id}" method="post"><input type="submit" value="Delete"/></form>
                       </td>
                   </tr>
               </c:forEach>

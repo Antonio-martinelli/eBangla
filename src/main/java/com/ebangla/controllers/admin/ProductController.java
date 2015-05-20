@@ -1,4 +1,4 @@
-package com.ebangla.controllers;
+package com.ebangla.controllers.admin;
 
 import com.ebangla.models.Product;
 import com.ebangla.models.ProductRepository;
@@ -11,39 +11,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
+@Controller("adminProductController")
+@RequestMapping(value = "/admin/product")
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String listProduct(ModelMap model) {
-        model.addAttribute("products", productRepository.findAll());
-        return "product/index";
-    }
-
-    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String addProduct(ModelMap model) {
         model.addAttribute("product", new Product());
         model.addAttribute("products", productRepository.findAll());
-        return "product/add";
+        return "admin/product";
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product, BindingResult result) {
-
         productRepository.save(product);
-
-        return "redirect:/product";
+        return "redirect:/admin/product";
     }
 
-    @RequestMapping("/product/delete/{productId}")
+    @RequestMapping("/delete/{productId}")
     public String deleteProduct(@PathVariable("productId") Long productId) {
-
         productRepository.delete(productRepository.findOne(productId));
-
-        return "redirect:/product";
+        return "redirect:/admin/product";
     }
 
 }

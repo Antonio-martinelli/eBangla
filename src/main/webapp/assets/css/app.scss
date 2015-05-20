@@ -19,7 +19,7 @@ a {
 }
 
 body {
-  font-family: 'helvetica';  
+  font-family: 'helvetica';
 }
 
 .btn {
@@ -176,6 +176,7 @@ body {
 /** struttura **/
 #wrap {
   @include outer-container;
+  min-height: 1000px;
   #content {
     margin-top: 2em;
     @include span-columns(9);
