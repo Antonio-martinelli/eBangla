@@ -2,7 +2,7 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "got_address")
 public class Address {
 
     @Id

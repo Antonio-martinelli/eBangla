@@ -1,9 +1,10 @@
 package com.ebangla.models;
 
-import java.util.*;
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
-@Entity
+@Entity(name = "got_order")
 public class Order {
 
     @Id

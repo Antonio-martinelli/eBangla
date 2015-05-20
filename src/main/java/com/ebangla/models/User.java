@@ -2,7 +2,7 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "got_user")
 public class User {
 
     @Id
