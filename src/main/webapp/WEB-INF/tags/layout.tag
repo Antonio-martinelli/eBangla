@@ -23,7 +23,7 @@
         <h1 id="logo"><a title="homepage" href="/">eBangla</a></h1>
         <nav id="main-nav">
             <ul>
-                <li><a class="active" title="homepage" href="/">home</a></li>
+                <li><a title="homepage" href="/">home</a></li>
                 <li><a title="fornitori" href="/supplier">fornitori</a></li>
                 <li><a title="prodotti" href="/product">prodotti</a></li>
                 <li><a title="ordini" href="/order">ordini</a></li>
@@ -46,6 +46,10 @@
     <footer id="footer">
         <p>Tutti i diritti sono riservati al bangladino sotto casa sua</p>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/min/script-min.js"></script>
     <jsp:invoke fragment="footer"/>
+
 </body>
 </html>
