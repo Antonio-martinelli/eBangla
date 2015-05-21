@@ -1,6 +1,7 @@
 package com.ebangla.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity(name = "got_user")
 public class User {
@@ -10,7 +11,15 @@ public class User {
     private Long id;
 
     @Basic
-    private String firstName, lastName, email;
+    @Size(min = 2, max = 15, message = "Inserisca un nome valido.")
+    private String firstName;
+
+    @Basic
+    @Size(min = 2, max = 15, message = "Inserisca un cognome valido.")
+    private String lastName;
+
+    @Basic
+    private String email;
 
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private Address address;

@@ -1,6 +1,7 @@
 package com.ebangla.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity(name = "got_address")
 public class Address {
@@ -10,7 +11,16 @@ public class Address {
     private Long id;
 
     @Basic
-    private String city, cap, address_line;
+    @Size(min = 2, max = 15, message = "Inserisca un nome valido.")
+    private String city;
+
+    @Basic
+    @Size(min = 2, max = 15, message = "Inserisca un nome valido.")
+    private String cap;
+
+    @Basic
+    @Size(min = 2, max = 15, message = "Inserisca un nome valido.")
+    private String address_line;
 
     public Long getId() {
         return id;

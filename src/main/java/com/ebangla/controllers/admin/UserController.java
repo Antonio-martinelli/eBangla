@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,10 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("user") User user, BindingResult result) {
+    public String addUser(@ModelAttribute("user") @Validated User user, BindingResult result) {
+        if(result.hasErrors()) {
+            return "admin/user";
+        }
         userRepository.save(user);
         return "redirect:/admin/user";
     }

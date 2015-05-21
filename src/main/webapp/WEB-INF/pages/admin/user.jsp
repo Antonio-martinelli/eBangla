@@ -15,22 +15,29 @@
     <jsp:attribute name="yeld">
 
         <form:form id="form-data" method="post" action="/admin/user" commandName="user" class="form-horizontal">
+            <spring:hasBindErrors name="address"></spring:hasBindErrors>
+
             <form:label path="firstName">Nome</form:label>
+            <form:errors path="firstName"></form:errors>
             <form:input path="firstName"/>
 
             <form:label path="lastName">Cognome</form:label>
+            <form:errors path="lastName"></form:errors>
             <form:input path="lastName"/>
 
             <form:label path="email">Email</form:label>
             <form:input path="email"/>
 
             <form:label path="address.city">Citt&agrave;</form:label>
+            <form:errors path="address.city"></form:errors>
             <form:input path="address.city"/>
 
             <form:label path="address.cap">Cap</form:label>
+            <form:errors path="address.cap"></form:errors>
             <form:input path="address.cap"/>
 
             <form:label path="address.address_line">Via</form:label>
+            <form:errors path="address.address_line"></form:errors>
             <form:input path="address.address_line"/>
 
             <input type="submit" value="aggiungi utente">
