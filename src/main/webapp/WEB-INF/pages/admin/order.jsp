@@ -6,8 +6,11 @@
 <t:layout>
 
 
-  <jsp:attribute name="title">Gestione degli ordini</jsp:attribute>
+    <jsp:attribute name="title">Gestione degli ordini</jsp:attribute>
 
+    <jsp:attribute name="head">
+        <link href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    </jsp:attribute>
 
     <jsp:attribute name="yeld">
 
@@ -19,12 +22,13 @@
 
         <c:if test="${!empty orders}">
           <h3>Orders</h3>
-          <table>
+          <table id="test">
             <thead>
             <tr>
-              <th>Creation Date</th>
-              <th>Closing Date</th>
-              <th>Evasion Date</th>
+                <th>Creation Date</th>
+                <th>Closing Date</th>
+                <th>Evasion Date</th>
+                <th>&nbsp;</th>
             </tr>
             </thead>
             <tbody>
@@ -42,6 +46,20 @@
           </table>
         </c:if>
 
+    </jsp:attribute>
+
+
+    <jsp:attribute name="footer">
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#test').DataTable({
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Italian.json"
+                    }
+                });
+            });
+        </script>
     </jsp:attribute>
 
 </t:layout>
