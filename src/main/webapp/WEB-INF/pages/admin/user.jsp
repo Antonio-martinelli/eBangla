@@ -56,6 +56,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Indirizzo</th>
                     <th>&nbsp;</th>
                 </tr>
                 </thead>
@@ -64,6 +65,7 @@
                     <tr>
                         <td>${user.lastName}, ${user.firstName}</td>
                         <td>${user.email}</td>
+                        <td>${user.city}, ${user.address_line}, ${user.cap}</td>
                         <td>
                             <form action="/admin/user/delete/${user.id}" method="post"><input type="submit" class="btn btn-danger btn-mini" value="Delete"/></form>
                         </td>

@@ -25,7 +25,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signup(@ModelAttribute("user") @Valid User user, BindingResult result) {
+    public String sendSignup(@ModelAttribute("user") @Valid User user, BindingResult result) {
         if(result.hasErrors()) {
             return "customer/signup";
         }
@@ -35,7 +35,16 @@ public class AuthController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
+        model.addAttribute("user", new User());
         return "customer/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String sendLogin(@ModelAttribute("user") @Valid User user, BindingResult result) {
+        if(result.hasErrors()) {
+            return "customer/login";
+        }
+        return "redirect:/";
     }
 
 }
