@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/admin/order")
+//@Secured("ROLE_ADMIN")
 public class OrderController {
 
     @Autowired

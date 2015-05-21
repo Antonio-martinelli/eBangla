@@ -27,12 +27,13 @@
                 <li><a title="fornitori" href="/admin/supplier">fornitori</a></li>
                 <li><a title="prodotti" href="/admin/product">prodotti</a></li>
                 <li><a title="ordini" href="/admin/order">ordini</a></li>
+                <li><a title="utenti" href="/admin/user">utenti</a></li>
             </ul>
         </nav>
         <nav id="secondary-nav">
             <ul>
-                <li><a title="registrati" href="/admin/user">registrati</a></li>
-                <li><a title="login" href="#">login</a></li>
+                <li><a title="registrati" href="/signup">registrati</a></li>
+                <li><a title="login" href="/login">login</a></li>
             </ul>
         </nav>
     </header>

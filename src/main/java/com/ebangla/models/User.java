@@ -19,10 +19,27 @@ public class User {
     private String lastName;
 
     @Basic
+    @Size(min = 2, max = 15, message = "Inserisca una username valida.")
+    private String username;
+
+    @Basic
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    private Address address;
+    @Basic
+    @Size(min = 6, message = "Inserisca una password valida (almeno 6 caratteri).")
+    private String password;
+
+    @Basic
+    @Size(min = 2, max = 15, message = "Inserisca una citta valida.")
+    private String city;
+
+    @Basic
+    @Size(min = 2, max = 15, message = "Inserisca un cap valido.")
+    private String cap;
+
+    @Basic
+    @Size(min = 2, message = "Inserisca un indirizzo valido.")
+    private String address_line;
 
     public Long getId() {
         return id;
@@ -62,12 +79,43 @@ public class User {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCap() {
+        return cap;
+    }
+
+    public void setCap(String cap) {
+        this.cap = cap;
+    }
+
+    public String getAddress_line() {
+        return address_line;
+    }
+
+    public void setAddress_line(String address_line) {
+        this.address_line = address_line;
+    }
 }

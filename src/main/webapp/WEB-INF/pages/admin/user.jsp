@@ -14,6 +14,8 @@
 
     <jsp:attribute name="yeld">
 
+        <h1>Gestione degli utenti</h1>
+
         <form:form id="form-data" method="post" action="/admin/user" commandName="user" class="form-horizontal">
             <spring:hasBindErrors name="address"></spring:hasBindErrors>
 
@@ -28,24 +30,27 @@
             <form:label path="email">Email</form:label>
             <form:input path="email"/>
 
-            <form:label path="address.city">Citt&agrave;</form:label>
-            <form:errors path="address.city"></form:errors>
-            <form:input path="address.city"/>
+            <form:label path="password">Password</form:label>
+            <form:errors path="password"></form:errors>
+            <form:input type="password" path="password"/>
 
-            <form:label path="address.cap">Cap</form:label>
-            <form:errors path="address.cap"></form:errors>
-            <form:input path="address.cap"/>
+            <form:label path="city">Citt&agrave;</form:label>
+            <form:errors path="city"></form:errors>
+            <form:input path="city"/>
 
-            <form:label path="address.address_line">Via</form:label>
-            <form:errors path="address.address_line"></form:errors>
-            <form:input path="address.address_line"/>
+            <form:label path="cap">Cap</form:label>
+            <form:errors path="cap"></form:errors>
+            <form:input path="cap"/>
+
+            <form:label path="address_line">Via</form:label>
+            <form:errors path="address_line"></form:errors>
+            <form:input path="address_line"/>
 
             <input type="submit" value="aggiungi utente">
 
         </form:form>
 
         <c:if test="${!empty users}">
-            <h3>User</h3>
             <table id="user">
                 <thead>
                 <tr>

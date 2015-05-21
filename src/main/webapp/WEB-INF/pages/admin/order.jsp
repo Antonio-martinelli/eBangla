@@ -14,14 +14,13 @@
 
     <jsp:attribute name="yeld">
 
-      <form:form id="form-data" method="post" action="/admin/order" commandName="order">
+        <h1>Gestione degli ordini</h1>
 
-        <input type="submit" value="Aggiungi ordine">
-
-      </form:form>
+        <form:form id="form-data" method="post" action="/admin/order" commandName="order">
+            <input type="submit" value="Aggiungi ordine">
+        </form:form>
 
         <c:if test="${!empty orders}">
-          <h3>Orders</h3>
           <table id="test">
             <thead>
             <tr>

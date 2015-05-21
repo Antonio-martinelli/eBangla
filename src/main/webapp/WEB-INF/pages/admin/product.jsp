@@ -15,6 +15,8 @@
 
     <jsp:attribute name="yeld">
 
+        <h1>Gestione dei prodotti</h1>
+
         <form:form id="form-data" method="post" action="/admin/product" commandName="product">
 
             <form:label path="name">Nome prodotto</form:label>
@@ -34,7 +36,6 @@
         </form:form>
 
         <c:if test="${!empty products}">
-            <h3>Prodotti</h3>
             <table id="products">
                 <thead>
                 <tr>

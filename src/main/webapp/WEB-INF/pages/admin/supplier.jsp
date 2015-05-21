@@ -14,6 +14,8 @@
 
     <jsp:attribute name="yeld">
 
+        <h1>Gestione dei fornitori</h1>
+
         <form:form id="form-data" method="post" action="/admin/supplier" commandName="supplier" class="form-horizontal">
 
             <form:label path="iva">Partita iva</form:label>
@@ -31,7 +33,6 @@
         </form:form>
 
       <c:if test="${!empty suppliers}">
-          <h3>Fornitori</h3>
           <table id="supplier">
               <thead>
               <tr>
