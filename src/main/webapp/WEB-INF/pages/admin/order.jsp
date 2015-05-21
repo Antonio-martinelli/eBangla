@@ -11,6 +11,12 @@
 
     <jsp:attribute name="yeld">
 
+      <form:form id="form-data" method="post" action="/admin/order" commandName="order">
+
+        <input type="submit" value="Aggiungi ordine">
+
+      </form:form>
+
         <c:if test="${!empty orders}">
           <h3>Orders</h3>
           <table>

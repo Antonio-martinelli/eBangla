@@ -19,7 +19,7 @@ public class OrderController {
     private OrderRepository orderRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String listOrders (ModelMap model) {
+    public String addOrder (ModelMap model) {
         model.addAttribute("order", new Order());
         model.addAttribute("orders", orderRepository.findAll());
         return "admin/order";
@@ -31,7 +31,7 @@ public class OrderController {
         return "redirect:/admin/order";
     }
 
-    @RequestMapping("/order/delete/{orderId}")
+    @RequestMapping("/delete/{orderId}")
     public String deleteOrder(@PathVariable("orderId") Long orderId) {
         orderRepository.delete(orderRepository.findOne(orderId));
         return "redirect:/admin/order";
