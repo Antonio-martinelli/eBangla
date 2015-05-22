@@ -1,6 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
@@ -13,7 +12,7 @@
 
         <h1>Effettua il login</h1>
 
-        <form name="f" id="form-data" action="<c:url value='j_spring_security_check'/>" method="POST">
+        <form name="f" id="form-data" action="/j_spring_security_check" method="POST">
 
             <label>Username</label>
             <input type='text' name='j_username' />

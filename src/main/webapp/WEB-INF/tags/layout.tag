@@ -3,6 +3,7 @@
 <%@attribute name="head" fragment="true" %>
 <%@attribute name="yeld" fragment="true" required="true" %>
 <%@attribute name="footer" fragment="true" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -24,16 +25,23 @@
         <nav id="main-nav">
             <ul>
                 <li><a title="homepage" href="/">home</a></li>
-                <li><a title="fornitori" href="/admin/supplier">fornitori</a></li>
-                <li><a title="prodotti" href="/admin/product">prodotti</a></li>
-                <li><a title="ordini" href="/admin/order">ordini</a></li>
-                <li><a title="utenti" href="/admin/user">utenti</a></li>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <li><a title="fornitori" href="/admin/supplier">fornitori</a></li>
+                    <li><a title="prodotti" href="/admin/product">prodotti</a></li>
+                    <li><a title="ordini" href="/admin/order">ordini</a></li>
+                    <li><a title="utenti" href="/admin/user">utenti</a></li>
+                </sec:authorize>
             </ul>
         </nav>
         <nav id="secondary-nav">
             <ul>
                 <li><a title="registrati" href="/signup">registrati</a></li>
-                <li><a title="login" href="/login">login</a></li>
+                <sec:authorize access="isAnonymous()">
+                    <li><a title="login" href="/login">login</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li><a href="/j_spring_security_logout">logout</a></li>
+                </sec:authorize>
             </ul>
         </nav>
     </header>

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -38,13 +37,6 @@ public class AuthController {
     public String login(ModelMap model) {
         model.addAttribute("user", new User());
         return "customer/login";
-    }
-
-    /** TODO: la sessione non viene ancora invalidata **/
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "customer/logout";
     }
 
 }

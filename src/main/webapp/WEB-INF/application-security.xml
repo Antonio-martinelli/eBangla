@@ -17,7 +17,7 @@
         <intercept-url pattern="/customer/**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login" />
-        <logout logout-success-url="/logout" />
+        <logout />
     </http>
 
     <authentication-manager alias="authenticationManager">
