@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -39,12 +40,11 @@ public class AuthController {
         return "customer/login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String sendLogin(@ModelAttribute("user") @Valid User user, BindingResult result) {
-        if(result.hasErrors()) {
-            return "customer/login";
-        }
-        return "redirect:/";
+    /** TODO: la sessione non viene ancora invalidata **/
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "customer/logout";
     }
 
 }

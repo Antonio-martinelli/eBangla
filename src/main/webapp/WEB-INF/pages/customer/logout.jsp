@@ -11,18 +11,9 @@
 
     <jsp:attribute name="yeld">
 
-        <h1>Effettua il login</h1>
+        <h1>Goodbye</h1>
 
-        <form name="f" id="form-data" action="<c:url value='j_spring_security_check'/>" method="POST">
-
-            <label>Username</label>
-            <input type='text' name='j_username' />
-
-            <label>Password</label>
-            <input type='password' name='j_password'>
-
-            <input name="submit" type="submit">
-        </form>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/8lmVZstFqlU?autoplay=1" frameborder="0" allowfullscreen></iframe>
 
     </jsp:attribute>
 
