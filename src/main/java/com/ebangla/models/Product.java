@@ -3,6 +3,7 @@ package com.ebangla.models;
 import javax.persistence.*;
 
 @Entity(name = "got_product")
+@NamedQuery(name = "Product.getAvailableProducts", query = "SELECT p FROM got_product p WHERE p.quantity > 0")
 public class Product {
 
     @Id

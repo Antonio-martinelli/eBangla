@@ -15,7 +15,7 @@ public class ProductController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listProduct(ModelMap model) {
-        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("products", productRepository.getAvailableProducts());
         return "customer/catalogue";
     }
 
