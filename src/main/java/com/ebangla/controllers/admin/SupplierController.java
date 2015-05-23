@@ -6,7 +6,8 @@ import com.ebangla.models.Supplier;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.ModelMap;
         import org.springframework.validation.BindingResult;
-        import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
         import org.springframework.web.bind.annotation.PathVariable;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +27,10 @@ public class SupplierController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addSupplier(@ModelAttribute("supplier") Supplier supplier, BindingResult result) {
+    public String addSupplier(@ModelAttribute("supplier") @Validated Supplier supplier, BindingResult result) {
+        if (result.hasErrors()){
+            return "admin/supplier";
+        }
         supplierRepository.save(supplier);
         return "redirect:/admin/supplier";
     }

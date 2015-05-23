@@ -19,12 +19,15 @@
         <form:form id="form-data" method="post" action="/admin/supplier" commandName="supplier" class="form-horizontal">
 
             <form:label path="iva">Partita iva</form:label>
+            <form:errors path="iva"></form:errors>
             <form:input path="iva"/>
 
             <form:label path="email">Email</form:label>
+            <form:errors path="email"></form:errors>
             <form:input path="email"/>
 
             <form:label path="phone">Numero di telefono</form:label>
+            <form:errors path="phone"></form:errors>
             <form:input path="phone"/>
 
 

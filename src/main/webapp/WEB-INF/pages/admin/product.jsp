@@ -20,15 +20,19 @@
         <form:form id="form-data" method="post" action="/admin/product" commandName="product">
 
             <form:label path="name">Nome prodotto</form:label>
+            <form:errors path="name"></form:errors>
             <form:input path="name"/>
 
             <form:label path="description">Descrizione</form:label>
+            <form:errors path="description"></form:errors>
             <form:input path="description"/>
 
             <form:label path="price">Prezzo</form:label>
+            <form:errors path="price"></form:errors>
             <form:input path="price"/>
 
             <form:label path="quantity">Quantit&agrave;</form:label>
+            <form:errors path="quantity"></form:errors>
             <form:input path="quantity"/>
 
             <input type="submit" value="aggiungi prodotto">

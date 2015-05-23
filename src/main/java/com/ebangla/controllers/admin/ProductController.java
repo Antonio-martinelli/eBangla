@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,10 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute("product") Product product, BindingResult result) {
+    public String addProduct(@ModelAttribute("product") @Validated Product product, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/product";
+        }
         productRepository.save(product);
         return "redirect:/admin/product";
     }

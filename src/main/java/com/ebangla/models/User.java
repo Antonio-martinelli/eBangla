@@ -1,6 +1,7 @@
 package com.ebangla.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity(name = "got_user")
@@ -11,34 +12,38 @@ public class User {
     private Long id;
 
     @Basic
-    @Size(min = 2, max = 15, message = "Inserisca un nome valido.")
+    @Pattern(regexp = "[a-zA-Zàèìòù ]{3,15}", message = "Inserisca un nome valido.")
     private String firstName;
 
     @Basic
-    @Size(min = 2, max = 15, message = "Inserisca un cognome valido.")
+    @Pattern(regexp = "[a-zA-Zàèìòù ]{3,15}", message = "Inserisca un cognome valido.")
     private String lastName;
 
     @Basic
-    @Size(min = 2, max = 15, message = "Inserisca una username valida.")
+    @Pattern(regexp = "^[a-z0-9_-]{3,15}$", message = "Inserisca una username valida " +
+            "(consentiti numeri, _ e -, min 3 caratteri, max 15).")
     private String username;
 
     @Basic
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*" +
+            "@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Inserisca una email valida.")
     private String email;
 
     @Basic
-    @Size(min = 6, message = "Inserisca una password valida (almeno 6 caratteri).")
+    @Pattern(regexp = "^[a-zA-Z]\\w{3,14}$", message = "Inserisca una password valida " +
+            "(almeno 4 caratteri, numeri e _ consentiti).")
     private String password;
 
     @Basic
-    @Size(min = 2, max = 15, message = "Inserisca una citta valida.")
+    @Pattern(regexp = "[a-zA-Zàèìòù ]{3,15}", message = "Inserisca una citta valida.")
     private String city;
 
     @Basic
-    @Size(min = 2, max = 15, message = "Inserisca un cap valido.")
+    @Pattern(regexp = "[0-9]{2}[01589][0-9]{2}", message = "Inserisca un cap valido.")
     private String cap;
 
     @Basic
-    @Size(min = 2, message = "Inserisca un indirizzo valido.")
+    @Pattern(regexp = "^[a-zA-Zàèìòù ]+" + "," + "[0-9]{1,5}$", message = "Inserisca un indirizzo valido (FORMATI: via,civico).")
     private String address_line;
 
     public Long getId() {

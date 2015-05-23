@@ -1,6 +1,10 @@
 package com.ebangla.models;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity(name = "got_product")
 @NamedQuery(name = "Product.getAvailableProducts", query = "SELECT p FROM got_product p WHERE p.quantity > 0")
@@ -11,12 +15,20 @@ public class Product {
     private Long id;
 
     @Basic
-    private String name, description;
+    @Pattern(regexp = "^[a-zA-Zàèìòù'0-9 ]{3,20}", message = "Inserisca un nome valido.")
+    private String name;
 
     @Basic
+    @Pattern(regexp = "[a-zA-Zàèìòù',.0-9 ]{5,50}", message = "Inserisca una descrizione valida.")
+    private String description;
+
+    @Basic
+    @NotNull(message = "Inserisca una quantita.")
     private Integer quantity;
 
     @Basic
+    @NotNull(message = "Inserisca un prezzo (es: 13.00).")
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private Double price;
 
     public Long getId() {

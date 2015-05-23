@@ -1,6 +1,12 @@
 package com.ebangla.models;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity(name = "got_supplier")
 public class Supplier {
@@ -10,7 +16,17 @@ public class Supplier {
     private Long id;
 
     @Basic
-    private String iva, email, phone;
+    @Pattern(regexp = "^[0-9]{11}$", message = "Inserisca una partita IVA valida.")
+    private String iva;
+
+    @Basic
+    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*" +
+    "@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Inserisca una email valida.")
+    private String email;
+
+    @Basic
+    @NumberFormat(style = Style.NUMBER) @Pattern(regexp = "^[0-9]{7,10}$", message = "Inserisca un numero valido.")
+    private String phone;
 
     public Long getId() {
         return id;
