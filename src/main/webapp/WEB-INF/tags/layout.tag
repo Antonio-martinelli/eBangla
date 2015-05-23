@@ -50,6 +50,24 @@
             <jsp:invoke fragment="yeld"/>
         </div>
         <div id="sidebar">
+            <div class="widget">
+                <h3>Il tuo carrello</h3>
+                <ul>
+                    <li>
+                        <h4>
+                            <a href="#">Spaghetti</a>
+                            <span class="quantity">(3)</span>
+                            <span class="price">&euro; 1.829,00</span>
+                            <a class="destroy" href="#"><i class="fa fa-trash-o"></i></a>
+                        </h4>
+                        <p class="desc">Dei fantastici spaghetti alla soia che non potrai acquistare da nessuna altra parte. Solo da eBangla.</p>
+                    </li>
+                </ul>
+                <div class="total">
+                    TOT: &euro; 10.000
+                </div>
+                <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a>
+            </div>
         </div>
     </div>
     <footer id="footer">

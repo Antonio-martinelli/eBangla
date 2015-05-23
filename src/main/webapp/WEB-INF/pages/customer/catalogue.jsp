@@ -26,11 +26,6 @@
                             <div class="desc">${product.description}</div>
                             <span class="price">&euro; ${product.price}</span>
                             <a href="#" title="acquista ora" class="btn">Acquista ora</a>
-                            <!--
-                        <td>
-                            <form action="/product/delete/${product.id}" method="post"><input type="submit" value="Delete"/></form>
-                        </td>
-                        -->
                         </div>
                     </article>
                 </c:forEach>
