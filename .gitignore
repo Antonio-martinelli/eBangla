@@ -5,3 +5,4 @@ ebangla.iml
 html/assets/app.css
 html/assets/app.css.map
 html/config.codekit
+src/main/resources/META-INF/persistence.xml
