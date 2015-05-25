@@ -46,6 +46,9 @@ public class User {
     @Pattern(regexp = "^[a-zA-Zàèìòù ]+" + "," + "[0-9]{1,5}$", message = "Inserisca un indirizzo valido (FORMATI: via,civico).")
     private String address_line;
 
+    @Basic
+    private String role = "ROLE_USER";
+
     public Long getId() {
         return id;
     }
@@ -123,4 +126,13 @@ public class User {
     public void setAddress_line(String address_line) {
         this.address_line = address_line;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }
