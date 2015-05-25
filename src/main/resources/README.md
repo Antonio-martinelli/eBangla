@@ -1,1 +1,0 @@
-Contiene file persistence.xml
