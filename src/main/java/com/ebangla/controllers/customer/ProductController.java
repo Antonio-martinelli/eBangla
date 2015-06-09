@@ -1,5 +1,6 @@
 package com.ebangla.controllers.customer;
 
+import com.ebangla.models.Order;
 import com.ebangla.models.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,13 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private Order currentOrder;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String catalogue(ModelMap model) {
+
+        model.addAttribute("test", currentOrder.getId());
         model.addAttribute("products", productRepository.getAvailableProducts());
         return "customer/catalogue";
     }

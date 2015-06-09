@@ -2,7 +2,8 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity(name = "got_order")
 public class Order {
@@ -15,7 +16,9 @@ public class Order {
     private Date creationDate, closingDate, evasionDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<OrderLine> orderLines;
+    @MapKeyJoinColumn(name = "product")
+    private Map<Product, OrderLine> orderLines = new HashMap<Product, OrderLine>();
+
     public Long getId() {
         return id;
     }
@@ -48,12 +51,18 @@ public class Order {
         this.evasionDate = new Date();
     }
 
-    public List<OrderLine> getOrderLines() {
+    public Map<Product, OrderLine> getOrderLines() {
         return orderLines;
     }
 
-    public void setOrderLines(List<OrderLine> orderLines) {
+    public void setOrderLines(Map<Product, OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public void addProduct(Product p) {
+        OrderLine orderLine = new OrderLine();
+        orderLine.setProduct(p);
+        orderLines.put(p, orderLine);
     }
 
 }

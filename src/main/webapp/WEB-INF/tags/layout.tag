@@ -51,22 +51,12 @@
         </div>
         <div id="sidebar">
             <div class="widget">
-                <h3>Il tuo carrello</h3>
-                <ul>
-                    <li>
-                        <h4>
-                            <a href="#">Spaghetti</a>
-                            <span class="quantity">(3)</span>
-                            <span class="price">&euro; 1.829,00</span>
-                            <a class="destroy" href="#"><i class="fa fa-trash-o"></i></a>
-                        </h4>
-                        <p class="desc">Dei fantastici spaghetti alla soia che non potrai acquistare da nessuna altra parte. Solo da eBangla.</p>
-                    </li>
+                <h3>Il tuo carrello ${sessionScope['scopedTarget.currentOrder'].id}</h3>
+                <ul id="currentCart">
                 </ul>
-                <div class="total">
-                    TOT: &euro; 10.000
-                </div>
-                <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a>
+                <div class="total" id="totalCart"></div>
+                <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
+                <a id="svuotaCarrello" class="btn" href="#">Annulla ordine <i class="fa fa-trash"></i></a>
             </div>
         </div>
     </div>
@@ -77,6 +67,81 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/js/min/script-min.js"></script>
     <jsp:invoke fragment="footer"/>
+
+    <script type="text/javascript">
+
+        function mettiNelCarrello() {
+            $(".acquista").on('click', function() {
+
+                var order = JSON.parse(sessionStorage.getItem("order"));
+
+                if (order === null) {
+                    order = {};
+                }
+
+                if(order[$(this).data("id")] !== undefined) {
+                    if(order[$(this).data("id")].quantity >= $(this).data("quantity")) {
+                        alert("Non abbiamo abbastanza "+$(this).data("name")+" in magazzino.");
+                    } else {
+                        order[$(this).data("id")].quantity++;
+                    }
+                } else {
+                    order[$(this).data("id")] = {
+                        id: $(this).data("id"),
+                        name: $(this).data("name"),
+                        description: $(this).data("description"),
+                        price: $(this).data("price"),
+                        quantity: 1
+                    };
+                }
+
+                order = JSON.stringify(order);
+
+                sessionStorage.setItem("order", order);
+
+                refreshCart();
+
+            });
+        }
+
+        function refreshCart() {
+            var cart = JSON.parse(sessionStorage.getItem("order"));
+            $("#currentCart").html("");
+            var tot = 0;
+            for (product in cart) {
+                orderLine = cart[product];
+                $("#currentCart").append("<li><h4><a href='#'>" + orderLine.name + "</a><span class='quantity'>(" + orderLine.quantity + ")</span><span class='price'>&euro; " + orderLine.quantity * orderLine.price + "</span><a class='destroy' href='#'><i class='fa fa-trash-o'></i></a></h4><p class='desc'>" + orderLine.description + "</p></li>");
+                tot += orderLine.price * orderLine.quantity;
+            }
+            $("#totalCart").html("TOT: &euro; " + tot);
+        }
+
+        function svuotaCarrello() {
+            $("#svuotaCarrello").on("click", function() {
+                sessionStorage.removeItem("order");
+                refreshCart();
+            });
+        }
+
+        refreshCart();
+
+        $(document).ready(function() {
+            refreshCart();
+            mettiNelCarrello();
+            svuotaCarrello();
+        });
+
+    </script>
+
+    <li>
+        <h4>
+            <a href="#">Spaghetti</a>
+            <span class="quantity">(3)</span>
+            <span class="price">&euro; 1.829,00</span><br/>
+            <a class="destroy" href="#"><i class="fa fa-trash-o"></i></a>
+        </h4>
+        <p class="desc">Dei fantastici spaghetti alla soia che non potrai acquistare da nessuna altra parte. Solo da eBangla.</p>
+    </li>
 
 </body>
 </html>

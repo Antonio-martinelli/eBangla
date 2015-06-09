@@ -27,13 +27,27 @@
                                 <h1>${product.name}</h1>
                                 <div class="desc">${product.description}</div>
                                 <span class="price">&euro; ${product.price}</span>
-                                <a href="#" data-id="${product.id}" title="acquista ora" class="btn">Acquista ora</a>
+                                <a
+                                        href="#"
+                                        data-name="${product.name}"
+                                        data-description="${product.description}"
+                                        data-price="${product.price}"
+                                        data-quantity="${product.quantity}"
+                                        data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</a>
                             </div>
                         </article>
                 </c:forEach>
             </div>
         </c:if>
 
+    </jsp:attribute>
+
+    <jsp:attribute name="footer">
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+            });
+        </script>
     </jsp:attribute>
 
 </t:layout>
