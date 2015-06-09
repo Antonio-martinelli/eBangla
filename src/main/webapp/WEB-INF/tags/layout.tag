@@ -133,15 +133,5 @@
 
     </script>
 
-    <li>
-        <h4>
-            <a href="#">Spaghetti</a>
-            <span class="quantity">(3)</span>
-            <span class="price">&euro; 1.829,00</span><br/>
-            <a class="destroy" href="#"><i class="fa fa-trash-o"></i></a>
-        </h4>
-        <p class="desc">Dei fantastici spaghetti alla soia che non potrai acquistare da nessuna altra parte. Solo da eBangla.</p>
-    </li>
-
 </body>
 </html>
