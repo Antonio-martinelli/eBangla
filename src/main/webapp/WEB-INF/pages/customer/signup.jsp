@@ -23,6 +23,9 @@
             <form:errors path="lastName"></form:errors>
             <form:input path="lastName"/>
 
+            <form:label path="username">Username</form:label>
+            <form:input path="username"/>
+
             <form:label path="email">Email</form:label>
             <form:input path="email"/>
 
