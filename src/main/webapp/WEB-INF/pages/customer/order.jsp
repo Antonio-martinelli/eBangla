@@ -17,7 +17,7 @@
         <h1>I tuoi ordini</h1>
 
         <form:form id="form-data" method="post" action="/customer/order" commandName="order">
-          <input type="submit" value="Aggiungi ordine">
+          <input type="submit" value="Conferma ordine">
         </form:form>
 
         <c:if test="${!empty orders}">

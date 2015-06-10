@@ -17,7 +17,7 @@
         <h1>Gestione degli ordini</h1>
 
         <form:form id="form-data" method="post" action="/admin/order" commandName="order">
-            <input type="submit" value="Aggiungi ordine">
+            <input type="submit" value="Evadi ordine">
         </form:form>
 
         <c:if test="${!empty orders}">
