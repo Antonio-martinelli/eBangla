@@ -27,13 +27,12 @@
                                 <h1>${product.name}</h1>
                                 <div class="desc">${product.description}</div>
                                 <span class="price">&euro; ${product.price}</span>
-                                <a
-                                        href="#"
+                                <p
                                         data-name="${product.name}"
                                         data-description="${product.description}"
                                         data-price="${product.price}"
                                         data-quantity="${product.quantity}"
-                                        data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</a>
+                                        data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</p>
                             </div>
                         </article>
                 </c:forEach>

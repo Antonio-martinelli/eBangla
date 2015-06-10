@@ -73,7 +73,7 @@
         function mettiNelCarrello() {
             $(".acquista").on('click', function() {
 
-                var order = JSON.parse(sessionStorage.getItem("order"));
+                var order = JSON.parse(localStorage.getItem("order"));
 
                 if (order === null) {
                     order = {};
@@ -97,7 +97,7 @@
 
                 order = JSON.stringify(order);
 
-                sessionStorage.setItem("order", order);
+                localStorage.setItem("order", order);
 
                 refreshCart();
 
@@ -105,20 +105,21 @@
         }
 
         function refreshCart() {
-            var cart = JSON.parse(sessionStorage.getItem("order"));
+            var cart = JSON.parse(localStorage.getItem("order"));
             $("#currentCart").html("");
             var tot = 0;
             for (product in cart) {
                 orderLine = cart[product];
                 $("#currentCart").append("<li><h4><a href='#'>" + orderLine.name + "</a><span class='quantity'>(" + orderLine.quantity + ")</span><span class='price'>&euro; " + orderLine.quantity * orderLine.price + "</span><a class='destroy' href='#'><i class='fa fa-trash-o'></i></a></h4><p class='desc'>" + orderLine.description + "</p></li>");
                 tot += orderLine.price * orderLine.quantity;
+                tot = Math.round(tot * 100) / 100;
             }
             $("#totalCart").html("TOT: &euro; " + tot);
         }
 
         function svuotaCarrello() {
             $("#svuotaCarrello").on("click", function() {
-                sessionStorage.removeItem("order");
+                localStorage.removeItem("order");
                 refreshCart();
             });
         }
