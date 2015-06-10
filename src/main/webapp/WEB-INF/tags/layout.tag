@@ -50,6 +50,13 @@
             <jsp:invoke fragment="yeld"/>
         </div>
         <div id="sidebar">
+            <sec:authorize access="isAnonymous()">
+                <div class="widget">
+                    <a title="registrati" href="/signup"><h3>Registrati!</h3></a>
+                    <p>Sarai abilitato ad utilizzare il Carrello per ordinare i nostri fantastici Prodotti!</p>
+                </div>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
             <div class="widget">
                 <h3>Il tuo carrello ${sessionScope['scopedTarget.currentOrder'].id}</h3>
                 <ul id="currentCart">
@@ -58,6 +65,7 @@
                 <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
                 <a id="svuotaCarrello" class="btn" href="#">Annulla ordine <i class="fa fa-trash"></i></a>
             </div>
+            </sec:authorize>
         </div>
     </div>
     <footer id="footer">
