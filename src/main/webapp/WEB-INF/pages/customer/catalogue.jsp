@@ -41,12 +41,4 @@
 
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-        <script type="text/javascript">
-            $(document).ready(function() {
-
-            });
-        </script>
-    </jsp:attribute>
-
 </t:layout>
