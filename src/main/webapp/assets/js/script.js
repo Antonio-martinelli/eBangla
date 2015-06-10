@@ -5,7 +5,7 @@ $(function() {
 function mettiNelCarrello() {
     $(".acquista").on('click', function() {
 
-        var order = JSON.parse(sessionStorage.getItem("order"));
+        var order = JSON.parse(localStorage.getItem("order"));
 
         if (order === null) {
             order = {};
@@ -29,7 +29,7 @@ function mettiNelCarrello() {
 
         order = JSON.stringify(order);
 
-        sessionStorage.setItem("order", order);
+        localStorage.setItem("order", order);
 
         refreshCart();
 
@@ -37,7 +37,7 @@ function mettiNelCarrello() {
 }
 
 function refreshCart() {
-    var cart = JSON.parse(sessionStorage.getItem("order"));
+    var cart = JSON.parse(localStorage.getItem("order"));
     $("#currentCart").html("");
     var tot = 0;
     for (product in cart) {
@@ -51,7 +51,7 @@ function refreshCart() {
 
 function svuotaCarrello() {
     $("#svuotaCarrello").on("click", function() {
-        sessionStorage.removeItem("order");
+        localStorage.removeItem("order");
         refreshCart();
     });
 }

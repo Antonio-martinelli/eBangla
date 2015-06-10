@@ -31,6 +31,9 @@
                     <li><a title="ordini" href="/admin/order">ordini</a></li>
                     <li><a title="utenti" href="/admin/user">utenti</a></li>
                 </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <li><a title="ordini" href="/customer/order">ordini</a> </li>
+                </sec:authorize>
             </ul>
         </nav>
         <nav id="secondary-nav">
@@ -50,6 +53,13 @@
             <jsp:invoke fragment="yeld"/>
         </div>
         <div id="sidebar">
+            <sec:authorize access="isAnonymous()">
+                <div class="widget">
+                    <a title="registrati" href="/signup"><h3>Registrati!</h3></a>
+                    <p>Sarai abilitato ad utilizzare il Carrello per ordinare i nostri fantastici Prodotti!</p>
+                </div>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
             <div class="widget">
                 <h3>Il tuo carrello ${sessionScope['scopedTarget.currentOrder'].id}</h3>
                 <ul id="currentCart">
@@ -58,6 +68,7 @@
                 <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
                 <a id="svuotaCarrello" class="btn" href="#">Annulla ordine <i class="fa fa-trash"></i></a>
             </div>
+            </sec:authorize>
         </div>
     </div>
     <footer id="footer">

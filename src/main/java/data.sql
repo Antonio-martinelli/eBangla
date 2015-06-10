@@ -16,4 +16,5 @@ INSERT INTO `got_user` (`id`, `address_line`, `cap`, `city`, `email`, `firstName
 	(2,'Piazza la bomba e scappa,34','00119','Roma','a.martinelli@gmail.com','Antonio','Martinelli','password1234','ROLE_USER','antonio'),
 	(3,'Via le mani dal naso,23','00119','Roma','l.goldoni@gmail.com','Lorenzo','Goldoni','password1234','ROLE_USER','lorenzo'),
 	(4,'Via del bangladino,34','00119','Roma','mario.rossi@gmail.com','Mario','Rossi','customer','ROLE_USER','customer'),
-	(5,'Via del bangladino,1','00119','Roma','a.mustafa@gmail.com','Ali','Mustafa','admin','ROLE_USER','admin');
+	(5,'Via del bangladino,1','00119','Roma','a.mustafa@gmail.com','Ali','Mustafa','admin','ROLE_ADMIN','admin'),
+	(6,'Via di un utente,1','00149','Roma','utente@utenzia.com','Utente','User','user','ROLE_USER','user');
