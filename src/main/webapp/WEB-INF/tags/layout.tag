@@ -31,6 +31,9 @@
                     <li><a title="ordini" href="/admin/order">ordini</a></li>
                     <li><a title="utenti" href="/admin/user">utenti</a></li>
                 </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <li><a title="ordini" href="/customer/order">ordini</a> </li>
+                </sec:authorize>
             </ul>
         </nav>
         <nav id="secondary-nav">
