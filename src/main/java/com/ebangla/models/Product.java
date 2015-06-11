@@ -31,6 +31,9 @@ public class Product {
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private Double price;
 
+    @Basic
+    private String image;
+
     public Long getId() {
         return id;
     }
@@ -73,5 +76,13 @@ public class Product {
 
     public void subQuantity(Integer quantity) {
         this.quantity -= quantity;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
