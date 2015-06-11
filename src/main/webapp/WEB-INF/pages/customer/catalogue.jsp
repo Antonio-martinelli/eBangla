@@ -21,7 +21,7 @@
                         <article class="product">
                             <a href="/product/${product.id}">
                                 <figure>
-                                    <img src="/assets/images/spaghetti.png" alt="foto prodotto 1">
+                                    <img src="/assets/images/${product.image}" alt="foto prodotto 1">
                                 </figure>
                             </a>
                             <div class="info">
