@@ -14,8 +14,8 @@
 
         <c:if test="${!empty products}">
             <div id="products">
-                <form id="search" action="#" method="post">
-                    <label><input type="text" placeholder="Cerca un prodotto" /></label>
+                <form id="search" action="/productSearch" method="get">
+                    <label><input name="s" type="text" placeholder="Cerca un prodotto" /></label>
                 </form>
                 <c:forEach items="${products}" var="product">
                         <article class="product">
