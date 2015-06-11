@@ -44,14 +44,6 @@ public class OrderControllerUser {
         order.setClosingDate(new Date());
         order.setUser(u);
         orderRepository.save(order);
-
-        List<OrderLine> orderLines = order.getOrderLines();
-        for(OrderLine orderLine : orderLines) {
-            Product p = productRepository.findOne(orderLine.getProduct().getId());
-            p.subQuantity(orderLine.getQuantity());
-            productRepository.save(p);
-        }
-
         return "yes, we can.";
     }
 

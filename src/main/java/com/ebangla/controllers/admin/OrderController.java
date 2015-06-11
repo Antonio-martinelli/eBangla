@@ -1,8 +1,6 @@
 package com.ebangla.controllers.admin;
 
-import com.ebangla.models.Order;
-import com.ebangla.models.OrderLine;
-import com.ebangla.models.OrderRepository;
+import com.ebangla.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin/order")
@@ -21,6 +20,9 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String addOrder (ModelMap model) {
@@ -45,6 +47,12 @@ public class OrderController {
     public String evadeOrder(@PathVariable("orderId") Long orderId) {
         Order o = orderRepository.findOne(orderId);
         o.setEvasionDate(new Date());
+        List<OrderLine> orderLines = o.getOrderLines();
+        for(OrderLine orderLine : orderLines) {
+            Product p = productRepository.findOne(orderLine.getProduct().getId());
+            p.subQuantity(orderLine.getQuantity());
+            productRepository.save(p);
+        }
         orderRepository.save(o);
         return "redirect:/admin/order";
     }
