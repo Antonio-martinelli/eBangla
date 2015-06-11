@@ -1,4 +1,4 @@
-package com.ebangla.models;
+            package com.ebangla.models;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +16,9 @@ public class Order {
 
     @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<OrderLine> orderLines;
+
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -55,6 +58,14 @@ public class Order {
 
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

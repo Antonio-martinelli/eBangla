@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -22,20 +23,26 @@ public class OrderControllerUser {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    public String addOrder (ModelMap model) {
+    public String addOrder (ModelMap model, Principal currentUser) {
         model.addAttribute("order", new Order());
-        model.addAttribute("orders", orderRepository.findAll());
+        model.addAttribute("orders", orderRepository.getOrderOrderByUser_Username(currentUser.getName()));
         return "customer/order";
     }
 
     @RequestMapping(method=RequestMethod.POST)
     public @ResponseBody String addOrder(HttpServletRequest request,
-                                         @RequestParam(value="json", required=false) String json) throws IOException {
-        Order order = new Order();
+                                         @RequestParam(value="json", required=false) String json,
+                                         Principal currentUser) throws IOException {
+        User u = userRepository.getByUsername(currentUser.getName());
+        Order order;
         ObjectMapper mapper = new ObjectMapper();
         order = mapper.readValue(json, Order.class);
         order.setClosingDate(new Date());
+        order.setUser(u);
         orderRepository.save(order);
 
         List<OrderLine> orderLines = order.getOrderLines();
@@ -45,7 +52,7 @@ public class OrderControllerUser {
             productRepository.save(p);
         }
 
-        return "redirect:/admin/order";
+        return "yes, we can.";
     }
 
     @RequestMapping("/delete/{orderId}")

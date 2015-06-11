@@ -16,14 +16,11 @@
 
         <h1>Gestione degli ordini</h1>
 
-        <form:form id="form-data" method="post" action="/admin/order" commandName="order">
-            <input type="submit" value="Evadi ordine">
-        </form:form>
-
         <c:if test="${!empty orders}">
           <table id="test">
             <thead>
             <tr>
+                <th>Cliente</th>
                 <th>Creation Date</th>
                 <th>Closing Date</th>
                 <th>Evasion Date</th>
@@ -34,15 +31,16 @@
             <tbody>
             <c:forEach items="${orders}" var="order">
               <tr>
+                <td>${order.user.firstName} ${order.user.lastName}, ${order.user.email}, ${order.user.address_line}</td>
                 <td>${order.creationDate}</td>
                 <td>${order.closingDate}</td>
                 <td>${order.evasionDate}</td>
                 <td>
                   <form action="/admin/order/delete/${order.id}" method="post"><input type="submit" value="Rimuovi"/></form>
                 </td>
-              <td>
+                <td>
                   <form action="/admin/order/evadi/${order.id}" method="post"><input type="submit" value="Evadi ordine"/></form>
-              </td>
+                </td>
               </tr>
             </c:forEach>
             </tbody>

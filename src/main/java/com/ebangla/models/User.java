@@ -2,9 +2,9 @@ package com.ebangla.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity(name = "got_user")
+@NamedQuery(name = "User.getByUsername", query = "SELECT u FROM got_user u WHERE u.username = ?")
 public class User {
 
     @Id
