@@ -2,14 +2,15 @@ package com.ebangla.controllers.customer;
 
 import com.ebangla.models.Order;
 import com.ebangla.models.OrderRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/customer/order")
@@ -25,10 +26,15 @@ public class OrderControllerUser {
         return "customer/order";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String addOrder(@ModelAttribute("order") Order order, BindingResult result) {
+    @RequestMapping(method=RequestMethod.POST)
+    public @ResponseBody String addOrder(HttpServletRequest request,
+                                         @RequestParam(value="json", required=false) String json) throws IOException {
+        Order order = new Order();
+        ObjectMapper mapper = new ObjectMapper();
+        order = mapper.readValue(json, Order.class);
+        order.setClosingDate(new Date());
         orderRepository.save(order);
-        return "redirect:/customer/order";
+        return order.toString();
     }
 
     @RequestMapping("/delete/{orderId}")

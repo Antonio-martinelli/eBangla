@@ -50,16 +50,42 @@ function refreshCart() {
 
 
 function svuotaCarrello() {
-    $("#svuotaCarrello").on("click", function() {
-        localStorage.removeItem("order");
-        refreshCart();
-    });
+    localStorage.removeItem("order");
+    refreshCart();
 }
 
 refreshCart();
 
+$("#confermaOrdine").on("click", function() {
+    var json = {
+        creationDate: new Date(),
+        orderLines: []
+    };
+
+    var order = JSON.parse(localStorage.getItem("order"));
+    for(product in order) {
+        json.orderLines.push({
+            product: {id: order[product].id},
+            quantity: order[product].quantity,
+            price: order[product].price
+        });
+    }
+    localStorage.setItem("json", JSON.stringify(json));
+    $.ajax({
+        type: "POST",
+        url: "/customer/order",
+        data: {json: localStorage.getItem("json")},
+        success: function() {
+            svuotaCarrello();
+            alert("Ordine confermato correttamente.");
+        }
+    });
+});
+
 $(document).ready(function() {
     refreshCart();
     mettiNelCarrello();
-    svuotaCarrello();
+    $("#svuotaCarrello").on("click", function() {
+        svuotaCarrello();
+    });
 });

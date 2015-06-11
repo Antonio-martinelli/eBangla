@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <t:layout>
 
@@ -27,12 +28,14 @@
                                 <h1>${product.name}</h1>
                                 <div class="desc">${product.description}</div>
                                 <span class="price">&euro; ${product.price}</span>
-                                <p
+                                <sec:authorize access="isAuthenticated()">
+                                    <p
                                         data-name="${product.name}"
                                         data-description="${product.description}"
                                         data-price="${product.price}"
                                         data-quantity="${product.quantity}"
                                         data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</p>
+                                </sec:authorize>
                             </div>
                         </article>
                 </c:forEach>

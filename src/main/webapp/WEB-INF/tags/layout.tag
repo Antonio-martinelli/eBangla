@@ -65,7 +65,7 @@
                 <ul id="currentCart">
                 </ul>
                 <div class="total" id="totalCart"></div>
-                <a class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
+                <a id="confermaOrdine" class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
                 <a id="svuotaCarrello" class="btn" href="#">Annulla ordine <i class="fa fa-trash"></i></a>
             </div>
             </sec:authorize>
