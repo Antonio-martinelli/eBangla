@@ -45,7 +45,7 @@ public class Order {
         return evasionDate;
     }
 
-    public void setEvasionDate() {
+    public void setEvasionDate(Date date) {
         this.evasionDate = new Date();
     }
 

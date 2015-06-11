@@ -45,7 +45,7 @@ public class OrderControllerUser {
             productRepository.save(p);
         }
 
-        return order.toString();
+        return "redirect:/admin/order";
     }
 
     @RequestMapping("/delete/{orderId}")

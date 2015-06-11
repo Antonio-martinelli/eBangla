@@ -27,7 +27,8 @@
                 <th>Creation Date</th>
                 <th>Closing Date</th>
                 <th>Evasion Date</th>
-                <th>&nbsp;</th>
+                <th>Cancella</th>
+                <th>Evadi</th>
             </tr>
             </thead>
             <tbody>
@@ -37,8 +38,11 @@
                 <td>${order.closingDate}</td>
                 <td>${order.evasionDate}</td>
                 <td>
-                  <form action="/admin/order/delete/${order.id}" method="post"><input type="submit" value="Delete"/></form>
+                  <form action="/admin/order/delete/${order.id}" method="post"><input type="submit" value="Rimuovi"/></form>
                 </td>
+              <td>
+                  <form action="/admin/order/evadi/${order.id}" method="post"><input type="submit" value="Evadi ordine"/></form>
+              </td>
               </tr>
             </c:forEach>
             </tbody>

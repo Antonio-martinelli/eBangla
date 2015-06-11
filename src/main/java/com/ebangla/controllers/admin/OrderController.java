@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping(value = "/admin/order")
 //@Secured("ROLE_ADMIN")
@@ -35,6 +37,14 @@ public class OrderController {
     @RequestMapping("/delete/{orderId}")
     public String deleteOrder(@PathVariable("orderId") Long orderId) {
         orderRepository.delete(orderRepository.findOne(orderId));
+        return "redirect:/admin/order";
+    }
+
+    @RequestMapping("/evadi/{orderId}")
+    public String evadeOrder(@PathVariable("orderId") Long orderId) {
+        Order o = orderRepository.findOne(orderId);
+        o.setEvasionDate(new Date());
+        orderRepository.save(o);
         return "redirect:/admin/order";
     }
 
