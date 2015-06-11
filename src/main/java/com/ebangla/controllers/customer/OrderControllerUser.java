@@ -1,7 +1,6 @@
 package com.ebangla.controllers.customer;
 
-import com.ebangla.models.Order;
-import com.ebangla.models.OrderRepository;
+import com.ebangla.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/customer/order")
@@ -18,6 +18,9 @@ public class OrderControllerUser {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String addOrder (ModelMap model) {
@@ -34,6 +37,14 @@ public class OrderControllerUser {
         order = mapper.readValue(json, Order.class);
         order.setClosingDate(new Date());
         orderRepository.save(order);
+
+        List<OrderLine> orderLines = order.getOrderLines();
+        for(OrderLine orderLine : orderLines) {
+            Product p = productRepository.findOne(orderLine.getProduct().getId());
+            p.subQuantity(orderLine.getQuantity());
+            productRepository.save(p);
+        }
+
         return order.toString();
     }
 

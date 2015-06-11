@@ -70,4 +70,8 @@ public class Product {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    public void subQuantity(Integer quantity) {
+        this.quantity -= quantity;
+    }
 }
