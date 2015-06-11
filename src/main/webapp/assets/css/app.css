@@ -212,3 +212,11 @@ body {
 
 .acquista {
   cursor: pointer; }
+
+.orderLines > li {
+  padding: 1em;
+  list-style: none;
+  background: #eee;
+  float: left;
+  width: 48%;
+  margin: 0 1% 1em 1%; }

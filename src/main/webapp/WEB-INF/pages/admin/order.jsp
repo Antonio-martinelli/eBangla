@@ -21,11 +21,12 @@
             <thead>
             <tr>
                 <th>Cliente</th>
-                <th>Creation Date</th>
-                <th>Closing Date</th>
-                <th>Evasion Date</th>
+                <th>Creazione</th>
+                <th>Chiusura</th>
+                <th>Evasione</th>
                 <th>Cancella</th>
                 <th>Evadi</th>
+                <th>Dettagli</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +41,9 @@
                 </td>
                 <td>
                   <form action="/admin/order/evadi/${order.id}" method="post"><input type="submit" value="Evadi ordine"/></form>
+                </td>
+                <td>
+                  <form action="/admin/order/details/${order.id}" method="get"><input type="submit" value="Dettagli"/></form>
                 </td>
               </tr>
             </c:forEach>

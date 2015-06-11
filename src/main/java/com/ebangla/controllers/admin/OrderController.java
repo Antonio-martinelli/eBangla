@@ -1,6 +1,7 @@
 package com.ebangla.controllers.admin;
 
 import com.ebangla.models.Order;
+import com.ebangla.models.OrderLine;
 import com.ebangla.models.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,6 +47,18 @@ public class OrderController {
         o.setEvasionDate(new Date());
         orderRepository.save(o);
         return "redirect:/admin/order";
+    }
+
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String detail(@PathVariable("id") long id, ModelMap model) {
+        Order o = orderRepository.findOne(id);
+        model.addAttribute("order", o);
+        Double total = 0.0;
+        for (OrderLine orderLine : o.getOrderLines()) {
+            total += orderLine.getPrice();
+        }
+        model.addAttribute("total", total);
+        return "admin/orderDetails";
     }
 
 }
