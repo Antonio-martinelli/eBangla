@@ -42,12 +42,12 @@ function refreshCart() {
     var tot = 0;
     for (product in cart) {
         orderLine = cart[product];
-        $("#currentCart").vprintf("<li><h4><a href='#'>%s</a><span class='quantity'>(%d)</span><span class='price'>&euro; %1$f</span><a class='destroy' href='#'><i class='fa fa-trash-o'></i></a></h4><p class='desc'>%s</p></li>",
-            [orderLine.name,  orderLine.quantity, orderLine.quantity * orderLine.price, orderLine.description]);
+        $("#currentCart").append("<li><h4><a href='#'>" + orderLine.name + "</a><span class='quantity'>(" + orderLine.quantity + ")</span><span class='price'>&euro; " + orderLine.quantity * orderLine.price + "</span></h4><p class='desc'>" + orderLine.description + "</p></li>");
         tot += orderLine.price * orderLine.quantity;
     }
     $("#totalCart").html("TOT: &euro; " + tot);
 }
+
 
 function svuotaCarrello() {
     $("#svuotaCarrello").on("click", function() {
