@@ -4,9 +4,8 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity(name = "got_supplier")
 public class Supplier {
@@ -27,6 +26,9 @@ public class Supplier {
     @Basic
     @NumberFormat(style = Style.NUMBER) @Pattern(regexp = "^[0-9]{7,10}$", message = "Inserisca un numero valido.")
     private String phone;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<Product> productList;
 
     public Long getId() {
         return id;
@@ -58,6 +60,14 @@ public class Supplier {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
 }

@@ -34,6 +34,9 @@ public class Product {
     @Basic
     private String image;
 
+    @ManyToOne
+    private Supplier supplier;
+
     public Long getId() {
         return id;
     }
