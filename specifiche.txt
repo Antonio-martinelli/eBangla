@@ -2,8 +2,8 @@ Caso d'uso UC1: consulta listino
 Attore primario: utente non registrato
 Scenario principale di successo:
 
-	1) L'utente consulta il catalogo dei prodotti
-	2) L'utente sceglie un prodotto e ne richiede i dettagli
+	1) L'utente consulta il catalogo dei prodotti nella home page del sito
+	2) L'utente sceglie un prodotto e ne richiede i dettagli cliccando sull'immagine
 	3) Il sistema mostra i dettagli del prodotto scelto
 
 
@@ -11,14 +11,13 @@ Caso d'uso UC2: effettua ordine
 Attore primario: cliente (utente registrato)
 Scenario principale di successo:
 
-	1)Il cliente crea un ordine
+	1)Il cliente crea un ordine cliccando sul bottone acquista di un prodotto
 	2)Il cliente consulta il catalogo dei prodotti
-	3)Il cliente sceglie un prodotto e aggiunge codice e quantità del prodotto scelto all'ordine
+	3)Il cliente sceglie un prodotto e lo aggiunge nel carrello cliccando sul bottone acquista. Se ne deve acquista N, cliccherà N volte sul bottone acquista.
 	4)Il sistema imposta il prezzo unitario del prodotto scelto al prezzo corrente di listino
-	5)Il sistema registra la riga ordine
-	6)Il cliente ripete i due passi precedenti finché necessario
-	7)Il cliente "chiude" l'ordine
-	8)Il sistema registra l'ordine
+	5)Il cliente ripete i due passi precedenti finché necessario
+	6)Il cliente "chiude" l'ordine
+	7)Il sistema registra l'ordine e tutte le righe d'ordine associate
 
 
 Caso d'uso UC3: consulta i propri ordini
