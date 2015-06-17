@@ -14,7 +14,7 @@ public class Order {
     @Basic
     private Date creationDate, closingDate, evasionDate;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "order")
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private List<OrderLine> orderLines;
 
     @ManyToOne

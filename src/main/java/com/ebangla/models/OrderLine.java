@@ -18,9 +18,6 @@ public class OrderLine {
     @Basic
     private Integer quantity;
 
-    @ManyToOne
-    private Order order;
-
     /**
      * Ritorna il prezzo di una singola RigaOrdine
      *
@@ -54,11 +51,4 @@ public class OrderLine {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }

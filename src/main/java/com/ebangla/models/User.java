@@ -43,7 +43,6 @@ public class User {
     private String cap;
 
     @Basic
-    @Pattern(regexp = "^[a-zA-Zàèìòù ]+" + "," + "[0-9]{1,5}$", message = "Inserisca un indirizzo valido (FORMATI: via,civico).")
     private String address_line;
 
     @Basic
