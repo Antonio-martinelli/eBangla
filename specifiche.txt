@@ -5,33 +5,6 @@ Scenario principale di successo:
 	1) L'utente consulta il catalogo dei prodotti
 	2) L'utente sceglie un prodotto e ne richiede i dettagli
 	3) Il sistema mostra i dettagli del prodotto scelto
-	//L'utente ripete i passi precedenti un numero indefinito di volte\\
-
-
-	    :Utente				    :Sistema
-
-	   		    mostraCatalogo()
-		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-			    catalogo prodotti
-		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-			mostraProdotto(idProdotto)
-		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-			  dettagli del prodotto
-		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-Contratti:
-
-1)	mostraCatalogo()
-	pre-cond: nessuna
-	post-cond: nessuna
-
-2)	mostraProdotto(idProdotto)
-	pre-cond: nessuna
-	post-cond: nessuna
 
 
 Caso d'uso UC2: effettua ordine
@@ -46,59 +19,6 @@ Scenario principale di successo:
 	6)Il cliente ripete i due passi precedenti finché necessario
 	7)Il cliente "chiude" l'ordine
 	8)Il sistema registra l'ordine
-	//Precondizioni: il cliente è identificato e autenticato\\
-
-
-
-		:Cliente					:Sistema
-
-		    		creaNuovoOrdine()
-		    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				mostraCatalogo()   //ci va??\\
-		    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				catalogo dei prodotti     //come sopra\\
-		    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	 _______________________________________________________________________
-	|LOOP|	     aggiungiProdottoAllOrdine(idProdotto, quantità)     [altri prodotti]
-	 ----	    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		|
-	   |									|
-	   |			prodotto con prezzo				|
-	   |	    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<		|
-	   |____________________________________________________________________|
-
-				terminaInserimentoProdotti()
-		    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				chiudiOrdine()
-		    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Contratti:
-
-1)	creaNuovoOrdine()
-	pre-con: Utente è autenticato e interagisce col Sistema
-	post-cond: -è stato creato un Ordine o (possiede una Lista RigaOrdine)
-		   -l'Ordine o è stato collegato con il Portale //o con Utente u per problemi di sessione?\\
-
-2)	mostraCatalogo()
-	pre: utente autenticato
-	post: nessuna
-
-3)	aggiungiProdottoAllOrdine(idProdotto, quantità)
-	pre: l'Utente u sta creando un Ordine o
-	post: -è stata creata una RigaOrdine ro
-	      -ro è stata collegata all'Ordine o
-	      -ro è stata collegata ad un Prodotto p, sulla base di idProdotto
-	      -attributi di ro inizializzati (quantità, prezzo, ...)
-
-4)	terminaInserimentoProdotti()
-	pre: l'Utente u sta creando un Ordine o
-	post: nessuna
-
-5)	chiudiOrdine()
-	pre: l'utente u ha terminato la creazione dell'Ordine o
-	post: -l'Ordine o è stato collegato all'Utente u //se non collegato durante creaNuovoOrdine()\\
 
 
 Caso d'uso UC3: consulta i propri ordini
@@ -109,34 +29,6 @@ Scenario principale:
 	3)Il cliente chiede il dettaglio di un ordine
 	4)Il sistema mostra il dettaglio dell'ordine
 	5)Il cliente ripete i due passi precedenti finché necessario
-	//Precondizioni: il cliente è identificato e autenticato\\
-
-
-		:Cliente				    :Sistema
-
-				mostraElencoOrdini()
-		    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				elenco degli ordini
-		    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-	[LOOP]-----[altri ordini]-----------------------------------|
-	   |			mostraOrdine(idOrdine)		    |
-	   |	    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    |
-	   |							    |
-	   |			dettagli dell'ordine		    |
-	   |	    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    |
-	   |________________________________________________________|
-
-Contratti:
-
-1)	mostraElencoOrdini()
-	pre: l'Utente u è autenticato e sta usando il Sistema
-	post: nessuna
-
-2)	mostraOrdine(idOrdine)
-	pre: l'Utente u sta consultando i suoi Ordini passati
-	post: nessuna
 
 
 Caso d'uso UC4: inserimento prodotti nel catalogo
@@ -145,49 +37,12 @@ Scenario principale:
 	1)L'amministratore inserisce un nuovo prodotto nel catalogo specificandone i dettagli
 	2)Il sistema registra il prodotto
 	3)I punti precedenti vengono ripetuti fino a che necessario
-	//Precondizioni: l'amministratore è identificato e autenticato\\
-
-
-	    :Amministratore				    :Sistema
-
-	[LOOP]-----[altri prodotti]---------------------------------|
-	   |		inserisciNuovoProdotto(dettagli)	    |	dettagli = codice,nome,descrizione,costo,...
-	   |	  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    |
-	   |							    |
-	   |			prodotto registrato		    |
-	   |	  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    |
-	   |________________________________________________________|
-
-
-Contratti:
-1)	inserisciNuovoProdotto(dettagli)
-	pre: l'Amministratore a è autenticato e sta usando il Sistema
-	post: -è stato creato un Prodotto p
-	      -gli attributi di p sono stati inizializzati in base a "dettagli"
-	      -p è stato collegato a Catalogo
-
 
 Caso d'uso UC5: recupera indirizzo cliente
 Attore primario: amministrazione
 Scenario principale:
 	1)L’amministratore fornisce l'id di un ordine
 	2)Il sistema mostra all’amministratore i dati del cliente che ha effettuato l’ordine
-	//Precondizioni: l’amministratore è identificato e autenticato\\
-
-
-	:Amministratore				    		:Sistema
-
-			mostraDettagliOrdine(idOrdine)				//o mostraClienteOrdine?\\
-		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-		  dettagli del cliente che ha effettuato l'ordine
-		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-Contratti:
-1)	mostraDettagliOrdine(idOrdine)
-	pre: l'Amministratore a è autenticato e sta usando il Sistema
-	post: nessuna
 
 
 Caso d'uso UC6: evasione ordine
@@ -195,37 +50,4 @@ Attore primario: amministrazione
 Scenario principale:
 	1)Il sistema presenta all'amministratore gli ordini chiusi, ma non evasi
 	2)L'amministratore sceglie un ordine
-	3)Il sistema evade l'ordine: aggiorna l'ordine inserendo la data di spedizione e aggiorna la quantità dei prodotti in 		  magazzino (sottraendo la quantità di prodotti usati per l'ordine)
-
-	Precondizioni:
-	l'amministratore è identificato e autenticato
-
-	Eccezioni:
-	alcuni prodotti potrebbero non essere presenti in magazzino nella quantità specificata dall'ordine. In questo caso l'ordine 		rimane in sospeso
-
-
-	:Amministratore				    		:Sistema
-
-				mostraOrdiniChiusi()			//penso serva anche se non specificato\\
-		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				elenco ordini non evasi
-		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-				evadiOrdine(idOrdine)
-		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-				ordine evaso				//superfluo
-		<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-Contratti:
-1)	mostraOrdiniChiusi()
-	pre: l'amministratore a è autenticato e sta usando il Sistema
-	post: nessuna
-
-2)	evadiOrdine(idOrdine)
-	pre: l'amministratore a sta navigando la lista degli Ordini non ancora evasi
-	post: -la dataEvasione di Ordine o, selezionato sulla base di idOrdine, è stata modificata
-	      -sulla base dei Prodotti delle RigheOrdine dell'Ordine o, le quantità di Prodotto sono state modificate
-	       (rimosse dal magazzino)
+	3)Il sistema evade l'ordine: aggiorna l'ordine inserendo la data di spedizione e aggiorna la quantità dei prodotti in magazzino (sottraendo la quantità di prodotti usati per l'ordine)
